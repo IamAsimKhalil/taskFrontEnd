@@ -113,7 +113,6 @@ function App() {
                   <div className="record-display-area">1</div>
                   <div className="record-display-area">{data.orderID}</div>
                   <div className="record-display-area">{data.totalAmmount}</div>
-
                   <div className="record-display-area">{data.comments}</div>
                 </div>
               ))}
