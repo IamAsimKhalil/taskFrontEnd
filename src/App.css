@@ -1,3 +1,8 @@
+.first-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .record-controllers {
   display: flex;
   flex-direction: column;
@@ -10,7 +15,7 @@
   margin-top: 50px;
 }
 
-.row-orderDivs {
+.row-order-divs {
   display: flex;
   flex-direction: row;
 }
@@ -72,4 +77,26 @@
   margin-left: 20px;
   margin-bottom: 5px;
 
+}
+
+.individual-records-container {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.serial-number {
+  margin-left: 20px;
+}
+
+.order-id {
+  margin-left: 75px;
+}
+
+.ammount {
+  margin-left: 35px;
+}
+
+.comments {
+  margin-left: 20px;
 }
