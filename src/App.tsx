@@ -3,16 +3,16 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 
 interface allCustomersPropTypes {
-  customerId: string | number;
+  _id: string | undefined;
   customerName: string;
 }
 interface selectedCustomerpropTypes {
-  customerId: number;
+  _id: string;
 }
 interface ordersPropsTypes {
-  orderId: number;
-  productId: number;
-  customerId: number;
+  productID: string;
+  customerID: string;
+  orderID: string;
   totalAmmount: number;
   orderDate: string;
   comments: string;
@@ -20,19 +20,19 @@ interface ordersPropsTypes {
 
 function App() {
   const allCustumersInitialState = {
-    customerId: "",
+    _id: "",
     customerName: "Select customer",
   };
   const selectedCustumerInitalState = {
-    customerId: 0,
+    _id: "",
   };
   const ordersInitialState = {
-    orderId: 100,
-    productId: 100,
-    customerId: 100,
+    productID: "",
+    customerID: "",
+    orderID: "",
     totalAmmount: 0,
-    orderDate: "not assigned",
-    comments: "test",
+    orderDate: "",
+    comments: "",
   };
   const [allCustomers, setAllCustomers] = useState<allCustomersPropTypes[]>([
     allCustumersInitialState,
@@ -53,20 +53,19 @@ function App() {
       .then((data) => {
         setAllCustomers([allCustumersInitialState, ...data]);
       });
+    fetch("http://localhost:5000/api/orders")
+      .then((response) => {
+        return response.json();
+      })
+      .then((orderData) => {
+        setOrders([...orderData]);
+      });
   }, []);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/api/orders")
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((orderData) => {
-  //       setOrders([...orderData]);
-  //     });
-  // }, []);
-
   const handleSelectCustumer = (event: any) => {
-    setSelectedCustomer({ customerId: event.target.value });
+    setSelectedCustomer({ _id: event.target.value });
+
+    console.log(selectedCustomer);
   };
 
   return (
@@ -81,13 +80,10 @@ function App() {
                   <select
                     className="customer-placeholder"
                     onChange={handleSelectCustumer}
-                    value={selectedCustomer.customerId}
+                    value={selectedCustomer._id}
                   >
                     {allCustomers.map((data) => (
-                      <option
-                        className="dropdown-button"
-                        value={data.customerId}
-                      >
+                      <option className="dropdown-button" value={data._id}>
                         {data.customerName}
                       </option>
                     ))}
@@ -98,7 +94,7 @@ function App() {
             <button className="button">New Record</button>
           </div>
         </div>
-        {selectedCustomer.customerId !== 0 && (
+        {selectedCustomer._id !== "" && (
           <div className="order-history">
             <div className="individual-records-container">
               <span className="serial-number">SR#</span>
@@ -106,14 +102,23 @@ function App() {
               <span className="ammount">AMMOUNT</span>
               <span className="comments">COMMENTS</span>
             </div>
+
             <div className="record_container">
-              {orders.map((data) => (
-                <div className="individual-records-container">
-                  <div className="record-display-area">1</div>
-                  <div className="record-display-area">{data.orderId}</div>
-                  <div className="record-display-area">{data.totalAmmount}</div>
-                  <div className="record-display-area">{data.comments}</div>
-                </div>
+              {orders.map((data, index) => (
+                <>
+                  {selectedCustomer._id === data.customerID && (
+                    <div className="individual-records-container">
+                      <div className="serial-record-display-area">
+                        {index + 1}
+                      </div>
+                      <div className="record-display-area">{data.orderID}</div>
+                      <div className="record-display-area">
+                        {data.totalAmmount}
+                      </div>
+                      <div className="record-display-area">{data.comments}</div>
+                    </div>
+                  )}
+                </>
               ))}
             </div>
           </div>

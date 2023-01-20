@@ -46,7 +46,7 @@
   flex-direction: column;
   border: 2px solid #000;
   height: auto;
-  width: 450px;
+  width: 400px;
   margin-left: 60px;
   margin-top: 130px;
 }
@@ -90,13 +90,23 @@
 }
 
 .order-id {
-  margin-left: 75px;
+  margin-left: 33px;
+
 }
 
 .ammount {
-  margin-left: 35px;
+  margin-left: 36px;
 }
 
 .comments {
+  margin-left: 18px;
+}
+
+.serial-record-display-area {
+  height: 25px;
+  width: 40px;
+  border: 1px solid #000;
   margin-left: 20px;
+  margin-bottom: 5px;
+
 }
