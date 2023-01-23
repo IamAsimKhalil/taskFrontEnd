@@ -1,0 +1,112 @@
+.first-page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.record-controllers {
+    display: flex;
+    flex-direction: column;
+    height: 73px;
+    width: 245px;
+    position: absolute;
+    border: 2px solid #000;
+    padding: auto;
+    margin-left: 60px;
+    margin-top: 50px;
+}
+
+.row-order-divs {
+    display: flex;
+    flex-direction: row;
+}
+
+.customer-placeholder {
+    height: 25px;
+    width: 140px;
+
+    margin-left: 2px;
+    margin-bottom: 5px;
+
+}
+
+.h5-text {
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.button {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    height: 26px;
+    width: 90px;
+}
+
+.order-history {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #000;
+    height: auto;
+    width: 400px;
+    margin-left: 110px;
+    margin-top: 130px;
+}
+
+.record-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.plachorder-arrangements {
+    display: flex;
+    flex-direction: row;
+}
+
+.dropdown-button {
+    height: 1.5em;
+    width: 1.5em;
+    margin-left: 115px;
+    margin-top: 0px;
+    position: relative;
+}
+
+.record-display-area {
+    height: 25px;
+    width: 80px;
+    border: 1px solid #000;
+    margin-left: 20px;
+    margin-bottom: 5px;
+
+}
+
+.individual-records-container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.serial-number {
+    margin-left: 20px;
+}
+
+.order-id {
+    margin-left: 33px;
+
+}
+
+.ammount {
+    margin-left: 75px;
+}
+
+.comments {
+    margin-left: 60px;
+}
+
+.serial-record-display-area {
+    height: 25px;
+    width: 40px;
+    border: 1px solid #000;
+    margin-left: 20px;
+    margin-bottom: 5px;
+
+}
