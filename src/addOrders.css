@@ -1,9 +1,18 @@
+.second-page-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #01010d;
+    height: 635px;
+
+}
+
 .container {
     display: flex;
-    margin-left: 100px;
-    margin-top: 100px;
+    margin-left: 130px;
+    margin-top: 130px;
     border: 2px solid #000;
     height: auto;
+    background-color: rgb(29, 102, 87);
     width: 390px;
 
 }
@@ -40,6 +49,7 @@
     height: 25px;
     width: 120px;
     border: 1px solid #000;
+    background-color: white;
     margin-left: 20px;
     margin-bottom: 5px;
 
@@ -61,6 +71,16 @@
 
 }
 
+.serial-record-display-area-output {
+    height: 25px;
+    width: 44px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    background-color: white;
+    border: 1px solid #000;
+
+}
+
 .record-controllers {
     display: flex;
     flex-direction: column;
@@ -69,7 +89,7 @@
     position: absolute;
     border: 2px solid #000;
     padding: auto;
-    margin-left: 60px;
+    margin-left: 130px;
     margin-top: 50px;
 }
 
@@ -79,8 +99,9 @@
     border: 2px solid #000;
     height: auto;
     width: 500px;
-    margin-left: 60px;
+    margin-left: 130px;
     margin-top: 130px;
+    background-color: rgb(29, 102, 87);
 }
 
 .new-orders-area {
@@ -89,7 +110,8 @@
     height: auto;
     width: 710px;
     border: 2px solid #000;
-    margin-left: 100px;
+    background-color: rgb(29, 102, 87);
+    margin-left: 130px;
     margin-top: 5px;
 }
 
@@ -99,6 +121,7 @@
     border: 2px solid #000;
     height: auto;
     width: 690px;
+    background-color: rgb(29, 102, 87);
     margin-left: 5px;
     margin-top: 10px;
 }
@@ -107,6 +130,8 @@
     height: 25px;
     width: 120px;
     border: 1px solid #000;
+    background-color: white;
+    ;
     margin-bottom: 5px;
     margin-left: 20px;
 }
@@ -115,6 +140,7 @@
     height: 25px;
     width: 116px;
     border: 1px solid #000;
+    background-color: white;
     margin-bottom: 5px;
     margin-left: 20px;
 }
@@ -124,6 +150,7 @@
     width: 116px;
     border: 1px solid #000;
     margin-bottom: 5px;
+    background-color: white;
     margin-left: 20px;
 }
 
@@ -131,7 +158,9 @@
     height: 25px;
     width: 116px;
     border: 1px solid #000;
+    background-color: white;
     margin-bottom: 5px;
+
     margin-left: 20px;
 }
 
@@ -139,13 +168,14 @@
     height: 25px;
     width: 116px;
     border: 1px solid #000;
+    background-color: white;
     margin-bottom: 5px;
-    margin-left: 510px;
+    margin-left: 5px;
 }
 
 
 .add-record-button {
-    height: 25px;
+    height: 29px;
     width: 30px;
     margin-bottom: 5px;
     margin-left: 20px;
@@ -167,4 +197,9 @@
     width: 60px;
     margin-bottom: 5px;
 
+}
+
+.sum-text {
+    margin-bottom: 5px;
+    margin-left: 463px;
 }

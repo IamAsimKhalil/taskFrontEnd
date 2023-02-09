@@ -1,6 +1,10 @@
 import { wrap } from "module";
 import React, { useEffect, useState, useMemo } from "react";
-import "./customerOrders.css";
+import "../../cutomerOrders.css";
+
+import OrderHearders from "./OrderHeaders";
+import PastOrderDetails from "../AddOrders/PastOrderDetails";
+import Button from "../AddOrders/Button";
 
 interface allCustomersPropTypes {
   _id: string | undefined;
@@ -9,7 +13,7 @@ interface allCustomersPropTypes {
 interface selectedCustomerpropTypes {
   _id: string;
 }
-interface ordersPropsTypes {
+export interface ordersPropsTypes {
   productID: string;
   customerID: string;
   orderID: string;
@@ -46,14 +50,7 @@ function CustomerOrders() {
   ]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/customers")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setAllCustomers([allCustumersInitialState, ...data]);
-      });
-    fetch("http://localhost:5000/api/orders")
+    fetch(`http://localhost:5000/api/orders?customerID=${selectedCustomer._id}`)
       .then((response) => {
         return response.json();
       })
@@ -68,13 +65,26 @@ function CustomerOrders() {
     );
     return data;
   }, [selectedCustomer]);
+  const fetchCustomers = () => {
+    fetch("http://localhost:5000/api/customers")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setAllCustomers([allCustumersInitialState, ...data]);
+      });
+  };
 
-  console.log(selectedCustomer);
+  const handleAddOrder = () => {
+    window.location.replace("/addOrders");
+  };
 
   const handleSelectCustumer = (event: any) => {
     setSelectedCustomer({ _id: event.target.value });
     const data = allCustomers.filter((item) => item._id === event.target.value);
     localStorage.setItem("userName", data[0].customerName);
+
+    localStorage.setItem("userID", data[0]._id || "");
   };
 
   return (
@@ -88,11 +98,16 @@ function CustomerOrders() {
                 <>
                   <select
                     className="customer-placeholder"
+                    onClick={fetchCustomers}
                     onChange={handleSelectCustumer}
                     value={selectedCustomer._id}
                   >
-                    {allCustomers.map((data) => (
-                      <option className="dropdown-button" value={data._id}>
+                    {allCustomers.map((data, index) => (
+                      <option
+                        className="dropdown-button"
+                        value={data._id}
+                        key={index}
+                      >
                         {data.customerName}
                       </option>
                     ))}
@@ -100,40 +115,19 @@ function CustomerOrders() {
                 </>
               </div>
             </div>
-            <button
-              className="button"
-              onClick={() => window.location.replace("/addOrders")}
-            >
-              New Record
-            </button>
+            <Button
+              className={"button"}
+              onclick={handleAddOrder}
+              title={"New Record"}
+            />
           </div>
         </div>
         {selectedCustomer._id !== "" && (
           <div className="order-history">
-            <div className="individual-records-container">
-              <span className="serial-number">SR#</span>
-              <span className="order-id">ORDERID</span>
-              <span className="ammount">AMMOUNT</span>
-              <span className="comments">COMMENTS</span>
-            </div>
+            <OrderHearders />
 
-            <div className="record_container">
-              {customerOrders.map((data, index) => (
-                <>
-                  {
-                    <div className="individual-records-container">
-                      <div className="serial-record-display-area">
-                        {index + 1}
-                      </div>
-                      <div className="record-display-area">{data.orderID}</div>
-                      <div className="record-display-area">
-                        {data.totalAmmount}
-                      </div>
-                      <div className="record-display-area">{data.comments}</div>
-                    </div>
-                  }
-                </>
-              ))}
+            <div className="record-container">
+              <PastOrderDetails allOrders={customerOrders} />
             </div>
           </div>
         )}

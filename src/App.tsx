@@ -1,7 +1,6 @@
 import React from "react";
-import "./App.css";
-import CustomerOrders from "./customerOrders";
-import AddOrders from "./addOrders";
+import CustomerOrders from "./Components/CustomerOrders/customerOrders";
+import AddOrders from "./Components/AddOrders/addOrders";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 export default function App() {
